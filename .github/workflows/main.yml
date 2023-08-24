@@ -20,5 +20,8 @@ jobs:
         run: |
           cd packages/qr
           npm version patch
+          git config --global user.name 'Your Name'
+          git config --global user.email 'andriyorehov@gmail.com'
+          git add .
           git commit -m 'bump version'
 #          gh pr create -B base_branch -H branch_to_merge --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action'
