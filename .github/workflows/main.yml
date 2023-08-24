@@ -26,4 +26,4 @@ jobs:
           git add .
           git commit -m 'bump version'
           git push origin bump
-#          gh pr create -B base_branch -H branch_to_merge --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action'
+          gh pr create --title "Pull request title" --body "Pull request body"
