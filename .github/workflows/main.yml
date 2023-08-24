@@ -16,4 +16,5 @@ jobs:
         run: echo ${{ github.event.head_commit.author.email}}
       - name: git log
         run: git ls-tree --name-only -r HEAD
-
+      - name: create pull request
+        run: gh pr create -B base_branch -H branch_to_merge --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action'
