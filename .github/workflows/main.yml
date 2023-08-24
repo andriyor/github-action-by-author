@@ -13,3 +13,6 @@ jobs:
     steps:
       - name: author
         run: echo ${{ github.event.head_commit.author.email}}
+      - name: git log
+        run: git ls-tree --name-only -r HEAD
+
