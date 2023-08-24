@@ -20,4 +20,5 @@ jobs:
         run: |
           cd packages/qr
           npm version patch
+          git commit -m 'bump version'
 #          gh pr create -B base_branch -H branch_to_merge --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action'
