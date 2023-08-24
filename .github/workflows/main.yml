@@ -17,7 +17,7 @@ jobs:
       - name: git log
         run: git ls-tree --name-only -r HEAD
       - name: create pull request
-        run: ./.github/scripts/create-bump.sh
+        run: ./.github/scripts/create-bump-pr.sh
         shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
