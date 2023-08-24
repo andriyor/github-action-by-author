@@ -1,5 +1,6 @@
-cd packages/qr
-git checkout -b "bump"
+read package_name
+cd "packages/${package_name}"
+git checkout -b "${package_name}-bump"
 npm version patch
 git config --global user.name 'Your Name'
 git config --global user.email 'andriyorehov@gmail.com'
