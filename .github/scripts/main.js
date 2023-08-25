@@ -43,7 +43,7 @@ const getChangedPackages = async () => {
 
 
 module.exports = async ({ github, context }) => {
-  const changedPackages = getChangedPackages();
+  const changedPackages = await getChangedPackages();
 
   for (const packageName of changedPackages) {
     const branchName = `chore/${packageName}-bump-golf`;
