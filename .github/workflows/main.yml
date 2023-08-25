@@ -18,6 +18,8 @@ jobs:
         run: git ls-tree --name-only -r HEAD
       - name: git diff-tree --no-commit-id --name-only -r HEAD
         run: git diff-tree --no-commit-id --name-only -r HEAD
+      - name: git diff --name-only HEAD^
+        run: git diff --name-only HEAD^
       - name: git show --name-only --numstat --format=
         run: git show --name-only --numstat --format=
       - name: create pull request
