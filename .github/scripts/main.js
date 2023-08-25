@@ -4,16 +4,18 @@ const exec = util.promisify(require("node:child_process").exec);
 
 const getPackageAuthorQuery = (owner, name, packageName) => {
   return `{
-    repository(owner: "andriyor", name: "github-action-by-author") {
-      ref(qualifiedName: "main") {
-        target {
-          ... on Commit {
-             history(first: 1, path: "packages/${packageName}/locales/en-US.json") {
-          edges {
-            node {
-              author {
-                user {
-                  login
+        repository(owner: "${owner}", name: "${name}") {
+          ref(qualifiedName: "main") {
+            target {
+              ... on Commit {
+                 history(first: 1, path: "packages/${packageName}/locales/en-US.json") {
+              edges {
+                node {
+                  author {
+                    user {
+                      login
+                    }
+                  }
                 }
               }
             }
@@ -21,8 +23,6 @@ const getPackageAuthorQuery = (owner, name, packageName) => {
         }
       }
     }
-  }
-}
   }`
 };
 
