@@ -26,7 +26,7 @@ const getPackageAuthorQuery = (owner, name, packageName) => {
   }`
 };
 
-module.exports = async ({ github, context }) => {
+const getChangedPackages = async () => {
   const { stdout } = await exec(
     "git diff-tree --no-commit-id --name-only -r HEAD",
   );
@@ -38,8 +38,14 @@ module.exports = async ({ github, context }) => {
       packages.add(packageName);
     }
   }
+  return [...packages];
+}
 
-  for (const packageName of [...packages]) {
+
+module.exports = async ({ github, context }) => {
+  const changedPackages = getChangedPackages();
+
+  for (const packageName of changedPackages) {
     const branchName = `chore/${packageName}-bump-golf`;
     await exec(`git checkout -b ${branchName}`);
     await exec(`npm version patch`, {
