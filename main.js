@@ -25,19 +25,57 @@ const octokit = require("@octokit/graphql");
 //     console.log(res.repository);
 // })
 
+// const result = octokit.graphql(
+//   `
+//     {
+//       repository(owner: "andriyor", name: "github-action-by-author") {
+//         ref(qualifiedName: "main") {
+//           target {
+//             ... on Commit {
+//                history(first: 1, path: "packages/qr/locales/en-US.json") {
+//             edges {
+//               node {
+//                 author {
+//                   user {
+//                     login
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+//     }
+//   `,
+//   {
+//     headers: {
+//       authorization: `token`,
+//     },
+//   }
+// );
+//
+// result.then((res) => {
+//   console.log(res.repository);
+// });
+
+
+
 const result = octokit.graphql(
-  `
+    `
     {
-      repository(owner: "andriyor", name: "github-action-by-author") {
+  repository(owner: "andriyor", name: "github-action-by-author") {
         ref(qualifiedName: "main") {
           target {
             ... on Commit {
-               history(first: 1, path: "packages/qr/locales/en-US.json") {
+               history(first: 1) {
             edges {
               node {
-                author {
-                  user {
-                    login
+                tree {
+                  id,
+                  entries {
+                    path
                   }
                 }
               }
@@ -47,13 +85,13 @@ const result = octokit.graphql(
       }
     }
   }
-    }
+}
   `,
-  {
-    headers: {
-      authorization: `token`,
-    },
-  }
+    {
+      headers: {
+        authorization: `token`,
+      },
+    }
 );
 
 result.then((res) => {

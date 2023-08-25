@@ -1,4 +1,7 @@
+const { exec, execSync } = require('node:child_process');
+
 module.exports = async ({ github, context }) => {
+  console.log(execSync('git diff-tree --no-commit-id --name-only -r HEAD'));
   const query = `{
     repository(owner: "andriyor", name: "github-action-by-author") {
       ref(qualifiedName: "main") {
