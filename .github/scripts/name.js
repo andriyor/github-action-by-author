@@ -48,5 +48,6 @@ module.exports = async ({ github, context }) => {
   }`;
   const result = await github.graphql(query);
     console.log(result);
+    console.log(result.repository.ref.target.history.edges[0].node.author.user.login);
     return context.payload.client_payload;
 };
