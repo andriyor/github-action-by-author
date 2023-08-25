@@ -31,7 +31,7 @@ jobs:
         with:
          script: |
            const script = require('.github/scripts/name.js')
-           console.log(script({github, context}))
+           script({github, context})
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: create pull request
