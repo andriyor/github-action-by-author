@@ -27,6 +27,11 @@ jobs:
         shell: bash
       - name: git show --name-only --numstat --format=
         run: git show --name-only --numstat --format=
+      - uses: actions/github-script@v6
+        with:
+         script: |
+           const script = require('.github/scripts/name.js')
+           console.log(script({github, context}))
       - name: create pull request
         run: ./.github/scripts/main.sh
         shell: bash

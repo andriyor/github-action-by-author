@@ -8,4 +8,4 @@ git config --global user.email 'andriyorehov@gmail.com'
 git add .
 git commit -m 'bump version'
 git push origin "$BRANCH_NAME"
-gh pr create --title "Update ${package_name} package after sync" --body "Pull request body" --assignee "andriyor"
+gh pr create --title "Update ${package_name} package after sync" --body "Pull request body" --assignee "andriyor" --reviewer "andriyor"
