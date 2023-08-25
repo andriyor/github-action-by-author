@@ -1,5 +1,7 @@
 OUTPUT=$(git show --name-only --numstat --format= | ./.github/scripts/changed-packages.sh)
 
+git show --name-only --numstat --format=
+
 for key in $OUTPUT
 do
   echo "make pr for ${key}"
