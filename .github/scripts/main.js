@@ -3,6 +3,8 @@ const util = require('node:util');
 const exec = util.promisify(require('node:child_process').exec);
 
 module.exports = async ({github, context}) => {
+    console.log(context.repo);
+
     const {stdout} = await exec('git diff-tree --no-commit-id --name-only -r HEAD');
     const regex = new RegExp("packages/([^/]+)/locales");
     const packages = new Set();
