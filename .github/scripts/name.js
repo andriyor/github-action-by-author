@@ -6,7 +6,7 @@ module.exports = async ({ github, context }) => {
   const { stdout } = await exec('git diff-tree --no-commit-id --name-only -r HEAD');
   const regex = new RegExp("packages/([^/]+)/locales");
   const packages = new Set();
-  for (const file of [...stdout.split('\n'), 'packages/qr/locales/en-US.json']) {
+  for (const file of stdout.split('\n')) {
     if (regex.test(file)) {
       const packageName = regex.exec(file)[1]
       packages.add(packageName);
