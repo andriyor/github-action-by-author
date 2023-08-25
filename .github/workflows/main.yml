@@ -14,28 +14,11 @@ jobs:
         with:
           fetch-depth: '2'
       - uses: actions/setup-node@v3
-      - name: author
-        run: echo ${{ github.event.head_commit.author.email}}
-      - name: git log
-        run: git ls-tree --name-only -r HEAD
-      - name: git diff-tree --no-commit-id --name-only -r HEAD
-        run: git diff-tree --no-commit-id --name-only -r HEAD
-      - name: git diff-tree --no-commit-id --name-only -r HEAD~1
-        run: git diff-tree --no-commit-id --name-only -r HEAD~1
-      - name: git diff --name-only HEAD^
-        run: git diff --name-only HEAD^
-        shell: bash
-      - name: git show --name-only --numstat --format=
-        run: git show --name-only --numstat --format=
-      - uses: actions/github-script@v6
+      - name: Create PR for updated translation
+        uses: actions/github-script@v6
         with:
          script: |
-           const script = require('.github/scripts/name.js')
+           const script = require('.github/scripts/main.js')
            script({github, context})
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: create pull request
-        run: ./.github/scripts/main.sh
-        shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
