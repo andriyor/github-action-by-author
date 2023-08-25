@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master' && github.event.head_commit.author.email == 'andriyorehov@gmail.com'
+    if: github.ref == 'refs/heads/main' && github.event.head_commit.author.email == 'andriyorehov@gmail.com'
     steps:
       - name: email
         run: echo ${{ github.event.head_commit.author.email }}
