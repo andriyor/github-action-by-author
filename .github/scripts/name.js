@@ -22,6 +22,7 @@ module.exports = async ({ github, context }) => {
     await exec("git add .");
     await exec("git commit -m 'bump version'");
     await exec(`git push origin ${branchName}`);
+    await exec(`gh pr create --title "Update ${packageName} package after sync" --body "Pull request body" --assignee "andriyor" --reviewer "andriyorehov@gmail.com"`);
   }
 
   const query = `{
