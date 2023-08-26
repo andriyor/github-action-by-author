@@ -17,7 +17,7 @@ jobs:
         with:
           fetch-depth: '2'
       - name: Check for automated commit
-        run: git diff-tree --no-commit-id --name-only -r HEAD | grep -q 'qa-PS' && echo 'matched'
+        run: git diff-tree --no-commit-id --name-only -r HEAD | grep -v 'qa-PS' && echo 'matched'
       - uses: actions/setup-node@v3
       - name: Create PR for updated translation
         if: ${{ success() }}
